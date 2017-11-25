@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  // On window resize cancel the game and refresh page 
   $(window).on('resize', function(){
     location.reload();
     location = location;
@@ -32,20 +33,22 @@ $(document).ready(function(){
      level = [200,500,10];
   }
  })
-
-  function addBean(){
+  // Add smiley in one random choosen cup
+  function addSmiley(){
     beginCup = cups[Math.floor((Math.random()*3))];
     $('.bean').remove();
     $(beginCup).append('<span class = "bean"><img src = "img/smile.png" alt = "smile"></span>');
   }
   
-  function showBean(){
+  //Show smiley in which cup is it
+  function showSmiley(){
      $('.bean').animate({opacity:0.5},1000,
     function(){
       $('.bean').animate({opacity:0},1000);
     });
   }
   
+  //Switch cups function
   function switchCup(){
     cupOne = cups[Math.floor((Math.random()*3))];
     
@@ -98,7 +101,7 @@ $(document).ready(function(){
     }
     randCup();
   }
-
+  // setInterval on switch cups
   function startGame(){
      var startGame = setInterval(function(){
       count ++;
@@ -110,22 +113,22 @@ $(document).ready(function(){
       switchCup(); 
     },level[1]) //interval speed
   }
-  
+  // On click start the game
   $('.start').on('click', function(){
     $(this).prop('disabled', true);
     $('.level').prop('disabled', true);
     $('.result').css("visibility","hidden");
     $('.cup').removeAttr("style");
     status = 0;
-    addBean();
-    showBean()
+    addSmiley();
+    showSmiley()
     setTimeout(function(){
       startGame();
     },3000)
   });
 
   $('.cup').on('click',function(){
-       showBean();
+       showSmiley();
     if(status === 1){
       if ($(this).find('.bean').length > 0){  
         $('.correct').css("visibility","visible");
