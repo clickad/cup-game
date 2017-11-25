@@ -127,7 +127,7 @@ body{
 }
 
 .bean img{
- width: 100%;
+  width: 100%;
 }
 
 .result{
@@ -161,7 +161,7 @@ body{
       height: 80px;
       top: 21px;
       left: 21px
-  }
+   }
 
   .bean{
       width: 25px;
@@ -202,9 +202,9 @@ body{
       height: 50px; 
       top: 13px;
       left: 13px
-  }
+   }
 
-  .bean{
+   .bean{
       width: 15px;
       height: 15px;
    }
@@ -221,7 +221,7 @@ body{
 
 @media (max-width:560px){
 
-  .bean{
+   .bean{
       width: 10px;
       height: 10px;
    }
@@ -245,7 +245,7 @@ body{
      left: 10px
    }
 
-  .bean{
+   .bean{
      width: 5px;
      height: 5px;
    }
