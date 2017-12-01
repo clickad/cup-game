@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-  // On window resize cancel the game and refresh page 
   $(window).on('resize', function(){
     location.reload();
     location = location;
@@ -9,46 +8,51 @@ $(document).ready(function(){
   var cupOne_pos, cupTwo_pos, cupOne, cupTwo, beginCup, status, cupHeight, cupWidth;
   var count = 0;
   var cups = ['.first-cup','.second-cup','.third-cup'];
+  var currentLevel = 1;
   var level = [200,500,10];
   $('.level').prop('selectedIndex',0);
+  $('.level').prop('disabled', true);
 
- $('.level').on('change', function(){
-   switch($(this).val()){
-    case  "1":
+  function levelChange(lev){
+   switch(lev){
+    case  1:
      level = [180,480,10];
     break;
-    case  "2":
+    case  2:
      level = [170,440,12];
     break;
-    case  "3":
+    case  3:
      level = [140,380,14];
     break;
-    case  "4":
+    case  4:
      level = [110,320,16];
     break;
-    case  "5":
+    case  5:
      level = [80,260,18];
     break;
     default:
      level = [200,500,10];
+   }
   }
- })
-  // Add smiley in one random choosen cup
-  function addSmiley(){
+
+  $('.level').on('change', function(){
+     currentLevel = parseInt($(this).val());
+     levelChange(currentLevel);
+  });
+
+  function addBean(){
     beginCup = cups[Math.floor((Math.random()*3))];
     $('.bean').remove();
     $(beginCup).append('<span class = "bean"><img src = "img/smile.png" alt = "smile"></span>');
   }
   
-  //Show smiley in which cup is it
-  function showSmiley(){
+  function showBean(){
      $('.bean').animate({opacity:0.5},1000,
     function(){
       $('.bean').animate({opacity:0},1000);
     });
   }
   
-  //Switch cups function
   function switchCup(){
     cupOne = cups[Math.floor((Math.random()*3))];
     
@@ -101,7 +105,7 @@ $(document).ready(function(){
     }
     randCup();
   }
-  // setInterval on switch cups
+
   function startGame(){
      var startGame = setInterval(function(){
       count ++;
@@ -113,32 +117,48 @@ $(document).ready(function(){
       switchCup(); 
     },level[1]) //interval speed
   }
-  // On click start the game
+  
   $('.start').on('click', function(){
     $(this).prop('disabled', true);
-    $('.level').prop('disabled', true);
+    //$('.level').prop('disabled', true);
     $('.result').css("visibility","hidden");
     $('.cup').removeAttr("style");
     status = 0;
-    addSmiley();
-    showSmiley()
+    levelChange(currentLevel);
+    addBean();
+    showBean()
     setTimeout(function(){
       startGame();
     },3000)
   });
 
   $('.cup').on('click',function(){
-       showSmiley();
+       showBean();
     if(status === 1){
       if ($(this).find('.bean').length > 0){  
-        $('.correct').css("visibility","visible");
         status = 0;
+        if(currentLevel < 5){ 
+          $('.correct').css("visibility","visible");
+          currentLevel++;
+          $('.level').val(currentLevel);
+          setTimeout(function(){
+            $('.start').trigger('click');
+          },3000);
+        } else {
+          $('.finish').css("visibility","visible");
+          $('.start').prop('disabled', false);
+          currentLevel = 1;
+          $('.level').val(currentLevel);
+        }
       } else{
         $('.wrong').css("visibility","visible");
         status = 0;
+        $('.start').prop('disabled', false);
+        currentLevel = 1;
+        $('.level').val(currentLevel);
       }
-      $('.start').prop('disabled', false);
-      $('.level').prop('disabled', false);
+      //$('.start').prop('disabled', false);
+      //$('.level').prop('disabled', false);
     }
   });
 
