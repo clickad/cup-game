@@ -5,12 +5,16 @@ body{
 
 .container, .header, .content, .footer{
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
   justify-content: center;
   align-content: center;
 }
 
 .container{
   flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   height: 100vh;
 }
 
@@ -21,6 +25,8 @@ body{
 .content{
   min-height: 60vh;
   flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
@@ -59,12 +65,12 @@ body{
   display: -webkit-flex;
   display: -ms-flex;
   flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
   justify-content: center;
   align-items: center;
   border: 1px solid #244032;
-  cursor: pointer;
-  -webkit-flex-direction: row; /* Safari 6.1+ */
-  -ms-flex-direction: row; /* IE 10 */ 
+  cursor: pointer; 
 }
 
 .sub-cup{
@@ -127,7 +133,7 @@ body{
 }
 
 .bean img{
-  width: 100%;
+ width: 100%;
 }
 
 .result{
@@ -142,6 +148,10 @@ body{
 
 .wrong{
   color: #991122;
+}
+
+.finish{
+ color:#355142; 
 }
 
 .correct{
@@ -161,7 +171,7 @@ body{
       height: 80px;
       top: 21px;
       left: 21px
-   }
+  }
 
   .bean{
       width: 25px;
@@ -202,9 +212,9 @@ body{
       height: 50px; 
       top: 13px;
       left: 13px
-   }
+  }
 
-   .bean{
+  .bean{
       width: 15px;
       height: 15px;
    }
@@ -221,7 +231,7 @@ body{
 
 @media (max-width:560px){
 
-   .bean{
+  .bean{
       width: 10px;
       height: 10px;
    }
@@ -245,7 +255,7 @@ body{
      left: 10px
    }
 
-   .bean{
+  .bean{
      width: 5px;
      height: 5px;
    }
