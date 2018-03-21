@@ -2,46 +2,45 @@ body{
   background: #222;
   font-family: sans-serif;
 }
-
-.container, .header, .content, .footer{
+.container, 
+.header, 
+.content{
   display: flex;
   display: -webkit-flex;
-  display: -ms-flex;
   justify-content: center;
   align-content: center;
 }
-
 .container{
   flex-direction: column;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   height: 100vh;
 }
-
-.header, .content{
+.content{
   padding: 20px 0;
 }
-
+.header{
+  position: absolute;
+  top: 10px;
+  width: 100%;
+}
 .content{
-  min-height: 60vh;
   flex-direction: column;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
-
 .wrapper{
+  position: relative;
   width: 50%;
   padding: 20px;
   display: flex;
   display: -webkit-flex;
-  display: -ms-flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 360px;
-  min-height: 160px;
   border-radius: 52px;
   background-image:url('..//img/background.jpg');
   background-position: center;
@@ -49,9 +48,22 @@ body{
   -ms-flex-direction: row;
   box-shadow: 10px 10px 20px 3px #151515;
 }
+.result{
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  font-size: 38px;
+  left: 50%;
+  transform: translate(-50%);
+}
 
-.footer{
-  flex-direction: column;
+.cup-wrapper{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
 }
 
 .cup{
@@ -63,7 +75,6 @@ body{
   box-shadow: 10px 10px 30px 0px #111;
   display: flex;
   display: -webkit-flex;
-  display: -ms-flex;
   flex-direction: row;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -72,7 +83,6 @@ body{
   border: 1px solid #244032;
   cursor: pointer; 
 }
-
 .sub-cup{
   width: 100px;
   height: 100px;
@@ -83,7 +93,6 @@ body{
   top: 23px;
   left: 23px;
 }
-
 .level{
   width: 100px;
   min-width: 60px;
@@ -91,7 +100,6 @@ body{
   text-align: center;
   cursor: pointer;
 }
-
 .level-label{
   font-size: 20px;
   text-transform: uppercase;
@@ -101,7 +109,6 @@ body{
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
 }
-
 .start{
   cursor: pointer;
   border: none;
@@ -112,16 +119,13 @@ body{
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
 }
-
 .start:hover{
   background: #bb7011;
 }
-
 .shadow{
   box-shadow: 20px 20px 20px 5px #111;
   z-index: 10;
 }
-
 .bean{
   width: 40px;
   height: 40px;
@@ -131,147 +135,110 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .bean img{
  width: 100%;
 }
-
-.result{
-  visibility: hidden;
-  font-size: 40px;
-  text-align: center;
-}
-
-.result img{
-  width: 35%;
-}
-
 .wrong{
   color: #991122;
 }
-
 .finish{
  color:#355142; 
 }
-
 .correct{
   color: #fff;
 }
 
 
 @media (max-width:1366px){
-
-   .cup{
-      width: 126px;
-      height: 126px;
-   }
-
-   .sub-cup{
-      width: 80px;
-      height: 80px;
-      top: 21px;
-      left: 21px
+  .cup{
+    width: 126px;
+    height: 126px;
   }
-
+  .sub-cup{
+    width: 80px;
+    height: 80px;
+    top: 21px;
+    left: 21px
+  }
   .bean{
-      width: 25px;
-      height: 25px;
-   }
+    width: 25px;
+    height: 25px;
+  }
 }
 
 
 @media (max-width:1280px){
-
-   .cup{
-      width: 110px;
-      height: 110px;
-   }
-
-   .sub-cup{
-      width: 70px;
-      height: 70px;
-      top: 18px;
-      left: 18px;
+  .cup{
+    width: 110px;
+    height: 110px;
   }
-
+  .sub-cup{
+    width: 70px;
+    height: 70px;
+    top: 18px;
+    left: 18px;
+  }
   .bean{
-      width: 20px;
-      height: 20px;
-   }
+    width: 20px;
+    height: 20px;
+  }
+  .result{
+    font-size: 30px;
+  }
 }
 
-@media (max-width:860px){
-
-   .cup{
-      width: 80px;
-      height: 80px;
-   }
-
-   .sub-cup{
-      width: 50px;
-      height: 50px; 
-      top: 13px;
-      left: 13px
+@media (max-width:768px){
+  .cup{
+    width: 80px;
+    height: 80px;
   }
-
+  .sub-cup{
+    width: 50px;
+    height: 50px; 
+    top: 13px;
+    left: 13px
+  }
   .bean{
-      width: 15px;
-      height: 15px;
-   }
- 
-   .wrapper{
-      width: 80%;
-   }
-
-   .container {
-     height: 120vh;
-   }
-
+    width: 15px;
+    height: 15px;
+  }
+  .wrapper{
+    width: 80%;
+  }
+  .result{
+    font-size: 24px;
+  }
+  .wrapper{
+    height: 270px;
+  }
 }
 
 @media (max-width:560px){
-
-  .bean{
-      width: 10px;
-      height: 10px;
-   }
- 
-   .wrapper{
-      width: 90%;
-   }
+  .wrapper{
+    width: 90%;
+  }
 }
 
 @media (max-width:380px){
-
-   .cup{
-     width: 65px;
-     height: 65px;
-   }
-
-   .sub-cup{
-     width: 43px;
-     height: 43px;
-     top: 10px;
-     left: 10px
-   }
-
-  .bean{
-     width: 5px;
-     height: 5px;
-   }
-
+  .cup{
+    width: 65px;
+    height: 65px;
+  }
+  .sub-cup{
+    width: 43px;
+    height: 43px;
+    top: 10px;
+    left: 10px
+  }
   .level-label{
     font-size: 16px;
     padding-top: 5px;
   }
-
   .start{
     padding: 5px 20px;
     font-size: 16px;
   }
-
   .wrapper{
     height: 200px;
   }
-
 }
