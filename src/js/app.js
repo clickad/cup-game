@@ -1,4 +1,4 @@
-(function(){
+(()=>{
   var app = {
     init: function(){
       this.cupOne_pos; 
@@ -58,10 +58,10 @@
     addBean:  function (){
       this.beginCup = this.cups[Math.floor((Math.random()*3))];
       $('.bean').remove();
-      $(this.beginCup).append('<span class = "bean"><img src = "img/smile.png" alt = "smile"></span>');
+      $(this.beginCup).append(`<span class = "bean"><img src = "img/smile.png" alt = "smile"></span>`);
     },
     showBean: function (){
-      $('.bean').animate({opacity:0.5},1000,function(){
+      $('.bean').animate({opacity:0.5},1000,()=>{
         $('.bean').animate({opacity:0},1000);
       });
     },
@@ -88,7 +88,7 @@
             width: self.cupWidth,
             height: self.cupHeight,
             top: '+=80px'
-          },self.level[0], 'linear', function(){
+          },self.level[0], 'linear', ()=>{
             $(self.cupOne).removeClass('shadow');  
           });  
         });
@@ -102,7 +102,7 @@
             width: self.cupWidth,
             height: self.cupHeight,
             top: '-=80px'
-          },self.level[0], 'linear', function(){
+          },self.level[0], 'linear', ()=> {
             $(self.cupTwo).removeClass('shadow');  
           });
         }); 
@@ -114,7 +114,7 @@
     },
     startGame: function (){
       var self = this;
-      var startGame = setInterval(function(){
+      var startGame = setInterval(()=> {
         self.count ++;
         if(self.count === self.level[2]){
           clearInterval(startGame);
@@ -134,7 +134,7 @@
       this.levelChange(this.currentLevel);
       this.addBean();
       this.showBean();
-      setTimeout(function(){
+      setTimeout(()=> {
         self.startGame();
       },3000);
     },
@@ -148,21 +148,21 @@
           this.status = 0;
           if(this.currentLevel < 5){ 
             this.$result.css('visibility','visible');
-            this.$result.empty().append('<span class = "result-text correct">Well done! Next level...</span>');
+            this.$result.empty().append(`<span class = "result-text correct">Well done! Next level...</span>`);
             this.currentLevel++;
             this.$level.val(this.currentLevel);
-            setTimeout(function(){
+            setTimeout(()=>{
               self.$start.trigger('click');
             },3000);
           } else {
-            this.$result.empty().append('<span class = "result-text finish">Congratulations!</span>');
+            this.$result.empty().append(`<span class = "result-text finish">Congratulations!</span>`);
             this.$start.prop('disabled', false);
             this.currentLevel = 1;
             this.$level.val(this.currentLevel);
           }
         } else{
           this.$result.css('visibility','visible');
-          this.$result.empty().append('<span class = "result-text wrong">Game over!</span>'); 
+          this.$result.empty().append(`<span class = "result-text wrong">Game over!</span>`); 
           this.status = 0;
           this.$start.prop('disabled', false);
           this.currentLevel = 1;
@@ -177,7 +177,7 @@
       location = location;
     }
   }
-  $(window).on('load', function(){
+  $(window).on('load', ()=>{
     app.init();
   })
 })();

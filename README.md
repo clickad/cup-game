@@ -1,3 +1,3 @@
 # cup-game
 
-Simple pure html, css, jquery game
+Simple html, css, jquery game
